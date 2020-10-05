@@ -11,13 +11,22 @@ class EditionRoster extends Model
 
     public function members()
     {
-        return $this->belongsToMany(User::class,
+        return $this->belongsToMany(
+            User::class,
             EditionRosterMember::class,
             'roster_id',
             'user_id')
             ->withPivot('role')
             ->withTimestamps()
             ->as('members');
+    }
+
+    public function edition()
+    {
+        return $this->hasOneThrough(
+            Edition::class,
+            EditionRosterMember::class, 'roster_id', 'edition_id'
+        );
     }
 
 }

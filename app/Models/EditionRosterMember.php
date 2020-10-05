@@ -11,7 +11,4 @@ class EditionRosterMember extends Pivot
 
     protected $table = "edition_roster_member";
 
-    protected $fillable = [
-
-    ];
 }
